@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雷速 · 信息索引页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f9fafb;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #1e293b;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 672px;
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.25rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero .sub {
+            font-size: 1rem;
+            color: #475569;
+            border-left: 3px solid #3b82f6;
+            padding-left: 1rem;
+            margin-top: 0.2rem;
+        }
+
+        /* 信息卡片网格 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin: 2.5rem 0;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.5rem 1.75rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 4px 12px rgba(0,0,0,0.02);
+            transition: box-shadow 0.2s, transform 0.1s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+            transform: translateY(-1px);
+        }
+
+        .card h2 {
+            font-size: 1.125rem;
+            font-weight: 550;
+            letter-spacing: -0.01em;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card h2 small {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 0.15rem 0.6rem;
+            border-radius: 9999px;
+            margin-left: 0.2rem;
+        }
+
+        .card p {
+            color: #334155;
+            font-size: 0.95rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 0;
+        }
+
+        .card li {
+            position: relative;
+            padding-left: 1.3rem;
+            margin-bottom: 0.25rem;
+            color: #334155;
+            font-size: 0.95rem;
+        }
+
+        .card li::before {
+            content: "·";
+            position: absolute;
+            left: 0.25rem;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.7rem;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            background: #eef2ff;
+            color: #1e40af;
+            padding: 0.2rem 0.8rem;
+            border-radius: 9999px;
+            font-weight: 450;
+        }
+
+        /* 自然链接段落 */
+        .link-section {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.6rem 1.75rem;
+            margin: 2rem 0 2.2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            border: 1px solid #e9edf3;
+        }
+
+        .link-section p {
+            font-size: 0.98rem;
+            color: #1e293b;
+            margin-bottom: 0.7rem;
+        }
+
+        .link-section a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #bfdbfe;
+            transition: border-color 0.15s;
+        }
+
+        .link-section a:hover {
+            border-bottom-color: #2563eb;
+        }
+
+        .link-section .note {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 0.5rem;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 0.6rem;
+        }
+
+        /* 人群高亮 */
+        .audience-highlight {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin: 1rem 0 0.2rem;
+        }
+
+        .audience-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 9999px;
+            padding: 0.25rem 0.9rem;
+            font-size: 0.85rem;
+            color: #1e293b;
+            font-weight: 450;
+        }
+
+        /* FAQ摘要 */
+        .faq-mini {
+            margin: 2.5rem 0 1.2rem;
+        }
+
+        .faq-mini details {
+            border-bottom: 1px solid #e9edf3;
+            padding: 0.75rem 0;
+        }
+
+        .faq-mini details:first-of-type {
+            border-top: 1px solid #e9edf3;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            color: #0f172a;
+            cursor: pointer;
+            font-size: 0.95rem;
+            padding: 0.15rem 0;
+        }
+
+        .faq-mini summary::-webkit-details-marker {
+            color: #3b82f6;
+        }
+
+        .faq-mini details p {
+            color: #475569;
+            font-size: 0.9rem;
+            margin: 0.4rem 0 0 1rem;
+            padding-right: 1rem;
+        }
+
+        /* 页脚 */
+        .footer {
+            margin-top: 3.2rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            border-top: 1px solid #e9edf3;
+            padding-top: 1.5rem;
+        }
+
+        .footer a {
+            color: #64748b;
+            text-decoration: none;
+            border-bottom: 1px dotted #cbd5e1;
+        }
+
+        .footer a:hover {
+            color: #1e293b;
+            border-bottom-color: #1e293b;
+        }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            body {
+                padding: 1.25rem 1rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 1.2rem 1.25rem;
+            }
+            .link-section {
+                padding: 1.2rem 1.25rem;
+            }
+            .audience-highlight {
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1>雷速 · 信息索引</h1>
+        <div class="sub">持续关注，再次回到熟悉的信息节点</div>
+    </div>
+
+    <!-- 主视觉卡片：再次访问与收藏 -->
+    <div class="card-grid">
+        <div class="card">
+            <h2>📌 主视觉 · 收藏即入口</h2>
+            <p>对经常需要查阅的内容而言，保留一个稳定的索引页比每次重新搜索更高效。<a href="https://indexs-leisu.com" style="font-weight:500; color:#2563eb; text-decoration:none; border-bottom:1px solid #bfdbfe;">雷速</a> 的设计初衷便是为此——提供一类轻量、可反复回来的信息落点。不必记住长链接，不必翻找历史记录，收藏一次即可长期复用。</p>
+            <div class="tag-group">
+                <span class="tag">🔄 再次访问</span>
+                <span class="tag">⭐ 收藏友好</span>
+                <span class="tag">🧭 目录式结构</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🧩 用途卡片 · 能做什么</h2>
+            <ul>
+                <li>快速定位信息分类，减少中间跳转</li>
+                <li>聚合常用内容入口，保持浏览节奏</li>
+                <li>适合个人知识管理或轻量导航场景</li>
+                <li>持续更新但不频繁变动布局，降低再认成本</li>
+            </ul>
+            <div style="margin-top:0.7rem; font-size:0.85rem; color:#475569;">
+                ● 每次访问所见即所得，无额外加载干扰
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>👥 适合人群 <small>参考</small></h2>
+            <div class="audience-highlight">
+                <span class="audience-item">信息整理者</span>
+                <span class="audience-item">重复访问者</span>
+                <span class="audience-item">轻量导航需求</span>
+                <span class="audience-item">收藏夹常客</span>
+                <span class="audience-item">极简工具偏好</span>
+            </div>
+            <p style="margin-top:0.8rem;">如果你习惯固定几个信息页面来回查看，或者希望减少每次查找的步骤，这类索引页可以成为你的默认中转站。</p>
+        </div>
+    </div>
+
+    <!-- 自然链接段落 -->
+    <div class="link-section">
+        <p>使用 <a href="https://indexs-leisu.com">雷速</a> 作为收藏条目后，后续访问只需从书签栏点开即可，不必每次输入或搜索。很多用户反馈，将此类索引页设为常驻标签后，浏览效率有明显改善——尤其是那些需要频繁查阅的文档、工具或资料汇总。</p>
+        <p>另一方面，索引页本身保持简洁，不堆积无关信息，让你每次打开时都能快速找到要点。如果你已经在使用 <a href="https://indexs-leisu.com">雷速</a> 的某个子页面，不妨直接收藏整个索引页，未来内容扩充时也能第一时间注意到新增模块。</p>
+        <div class="note">提示：建议将本页加入浏览器书签栏或阅读列表，以保持长期可访问。</div>
+    </div>
+
+    <!-- FAQ 摘要（简洁） -->
+    <div class="faq-mini">
+        <details>
+            <summary>这个页面和普通导航页有什么不同？</summary>
+            <p>侧重“再次访问”体验——布局稳定，不频繁改版，减少每次的认知负担。信息密度适中，不追求大而全，而是提供清晰的分类路径。</p>
+        </details>
+        <details>
+            <summary>需要注册或登录才能使用吗？</summary>
+            <p>不需要。该索引页为公开内容，直接通过链接打开即可浏览。所有引用资源均基于开放访问设计。</p>
+        </details>
+        <details>
+            <summary>如何跟上内容更新？</summary>
+            <p>建议定期回访（比如每两周），或通过收藏夹直接进入。索引页本身会保持内容的新鲜度，但不会突然改变整体结构。</p>
+        </details>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <span>索引页 · 持续关注 · </span>
+        <a href="https://indexs-leisu.com">雷速</a>
+        <span style="margin:0 0.4rem;">·</span>
+        <span>信息卡片式介绍</span>
+        <br>
+        <span style="font-size:0.75rem; display:inline-block; margin-top:0.3rem;">简洁专业 · 适合收藏与回访</span>
+    </div>
+
+</div>
+</body>
+</html>
