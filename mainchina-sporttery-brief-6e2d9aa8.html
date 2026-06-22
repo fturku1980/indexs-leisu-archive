@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞彩网 · 简明指南与访问提醒</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fafafa;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', sans-serif;
+            line-height: 1.7;
+            color: #1e1e1e;
+        }
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* 顶部导航 */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0 16px 0;
+            border-bottom: 1px solid #e6e6e6;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .top-nav .brand {
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.01em;
+            color: #222;
+        }
+
+        .top-nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.95rem;
+            margin-left: 18px;
+            transition: color 0.2s;
+        }
+
+        .top-nav a:hover {
+            color: #c0392b;
+        }
+
+        /* 英雄区 —— 简化、留白 */
+        .hero {
+            padding: 52px 0 40px 0;
+        }
+
+        .hero h1 {
+            font-size: 2.1rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: #222;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #4a4a4a;
+            max-width: 580px;
+        }
+
+        .hero .highlight-link {
+            display: inline-block;
+            margin-top: 12px;
+        }
+
+        .hero .highlight-link a {
+            color: #c0392b;
+            text-decoration: none;
+            border-bottom: 1px solid #c0392b;
+            padding-bottom: 1px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .hero .highlight-link a:hover {
+            opacity: 0.7;
+        }
+
+        /* 三个场景模块 */
+        .scenes {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            margin: 28px 0 48px 0;
+        }
+
+        .scene-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 28px 28px 30px 28px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02), 0 2px 8px rgba(0,0,0,0.03);
+            transition: box-shadow 0.2s;
+        }
+
+        .scene-card:hover {
+            box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+        }
+
+        .scene-card h3 {
+            font-weight: 500;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #222;
+            letter-spacing: 0.01em;
+        }
+
+        .scene-card p {
+            font-size: 0.95rem;
+            color: #4a4a4a;
+            margin-bottom: 4px;
+        }
+
+        .scene-card .tag {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 8px;
+            border-left: 3px solid #ddd;
+            padding-left: 12px;
+        }
+
+        /* 常见说明 (FAQ 摘要) */
+        .faq-summary {
+            margin: 8px 0 56px 0;
+        }
+
+        .faq-summary h2 {
+            font-weight: 500;
+            font-size: 1.3rem;
+            color: #222;
+            margin-bottom: 14px;
+        }
+
+        .faq-item {
+            padding: 14px 0;
+            border-bottom: 1px solid #ececec;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item .question {
+            font-weight: 500;
+            color: #2c2c2c;
+            margin-bottom: 4px;
+            font-size: 0.98rem;
+        }
+
+        .faq-item .answer {
+            font-size: 0.9rem;
+            color: #5a5a5a;
+            line-height: 1.6;
+        }
+
+        .faq-item .answer a {
+            color: #c0392b;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(192,57,43,0.25);
+            transition: border 0.2s;
+        }
+
+        .faq-item .answer a:hover {
+            border-bottom-color: #c0392b;
+        }
+
+        /* 脚注 */
+        .footer {
+            padding: 20px 0 36px 0;
+            border-top: 1px solid #eaeaea;
+            font-size: 0.82rem;
+            color: #888;
+            text-align: center;
+            letter-spacing: 0.02em;
+        }
+
+        .footer a {
+            color: #555;
+            text-decoration: none;
+            border-bottom: 1px dotted #bbb;
+        }
+
+        .footer a:hover {
+            color: #c0392b;
+            border-bottom-color: #c0392b;
+        }
+
+        /* 响应式 */
+        @media (max-width: 520px) {
+            .page {
+                padding: 0 18px;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .top-nav a {
+                margin-left: 12px;
+                font-size: 0.88rem;
+            }
+            .scene-card {
+                padding: 22px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- 顶部导航 -->
+        <nav class="top-nav">
+            <span class="brand">简明指南</span>
+            <span>
+                <a href="#scenes">场景</a>
+                <a href="#faq">常见说明</a>
+                <a href="https://mainchina-sporttery.com" style="color:#c0392b;">竞彩网</a>
+            </span>
+        </nav>
+
+        <!-- 英雄区 -->
+        <header class="hero">
+            <h1>竞彩 · 日常参考</h1>
+            <p>一份轻量的访问提醒与使用思路，适合偶尔关注竞猜的朋友。本站并非官方入口，仅提供基础指引与实用场景说明。</p>
+            <div class="highlight-link">
+                当前可参考的站点：<a href="https://mainchina-sporttery.com">竞彩网</a>
+            </div>
+        </header>
+
+        <!-- 三个场景模块 id="scenes" -->
+        <section id="scenes" class="scenes">
+            <div class="scene-card">
+                <h3>① 赛前快速浏览</h3>
+                <p>提前查看当日对阵与基础数据，结合自己的判断做简单记录。保持轻松心态，避免过度关注。</p>
+                <div class="tag">适合：赛前10分钟 · 手机端</div>
+            </div>
+            <div class="scene-card">
+                <h3>② 查结果与核对</h3>
+                <p>比赛结束后，在 <a href="https://mainchina-sporttery.com" style="color:#c0392b; text-decoration:underline;">竞彩网</a> 上核对最终赛果。养成核实习惯，避免信息混淆。</p>
+                <div class="tag">适合：赛后查看 · 数据对照</div>
+            </div>
+            <div class="scene-card">
+                <h3>③ 规则与玩法温习</h3>
+                <p>偶尔回顾过关方式、奖金计算等基础规则，减少误操作。网站上常有最新说明模块。</p>
+                <div class="tag">适合：新赛季前 · 规则更新期</div>
+            </div>
+        </section>
+
+        <!-- 常见说明 FAQ 摘要 -->
+        <section id="faq" class="faq-summary">
+            <h2>几点提醒 & 常见说明</h2>
+            <div class="faq-item">
+                <div class="question">▸ 访问竞彩网需要注意什么？</div>
+                <div class="answer">建议使用主流浏览器，保持网络稳定。如果遇到加载缓慢，可以稍后重试。直接访问 <a href="https://mainchina-sporttery.com">竞彩网</a> 即可获取最新信息。</div>
+            </div>
+            <div class="faq-item">
+                <div class="question">▸ 竞彩数据每天几点更新？</div>
+                <div class="answer">通常上午更新当日赛事，具体时间视比赛日程而定。周末场次较多，建议午后再次确认。</div>
+            </div>
+            <div class="faq-item">
+                <div class="question">▸ 如何避免信息过载？</div>
+                <div class="answer">只关注自己感兴趣的联赛或场次，不必浏览所有数据。把竞彩网当作参考工具之一，而不是决策唯一依据。</div>
+            </div>
+            <div class="faq-item">
+                <div class="question">▸ 页面提示“安全证书”或“风险”怎么办？</div>
+                <div class="answer">检查网址是否完全一致（<code>mainchina-sporttery.com</code>），不要从陌生链接进入。如有疑虑，可暂时退出并联系平台客服。</div>
+            </div>
+        </section>
+
+        <!-- 底部 -->
+        <footer class="footer">
+            <p>本页仅作为个人笔记风格指引，非官方站点。如需查阅完整信息，请直接访问 <a href="https://mainchina-sporttery.com">竞彩网</a>。</p>
+            <p style="margin-top: 4px;">保持理性 · 适度参考</p>
+        </footer>
+    </div>
+</body>
+</html>
